@@ -29,6 +29,7 @@ impl EventHandler for Handler {
 				let msg: Message = msg.channel_id.message(http,msg.id).await.unwrap();
 				if !msg.embeds.last().is_none() {
 					println!("{}",msg.embeds.last().unwrap().description.clone().unwrap());
+					msg.delete(ctx.http).await.unwrap();
 					exit(0)}
 			}
 		}
